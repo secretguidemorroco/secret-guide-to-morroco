@@ -248,7 +248,7 @@
         
         <div class="price-tag" data-i18n="price">5 دولار فقط</div>
         
-        <button class="cta-button" id="buy-now-btn" data-i18n="buy_button">اشتر الدليل الآن</button>
+        <a href="https://payhip.com/b/PTr5z" class="cta-button" id="buy-now-btn" data-i18n="buy_button">اشتر الدليل الآن</a>
         
         <p><small data-i18n="download_note">تحميل فوري بعد الدفع • نسخة PDF عالية الجودة</small></p>
     </header>
@@ -318,36 +318,6 @@
         <p data-i18n="copyright">© 2025 الدليل السري للمغرب</p>
         <p data-i18n="contact">للتواصل: <a href="mailto:contact@morocco-secret.com" style="color: var(--zellige-turquoise);">contact@morocco-secret.com</a></p>
     </footer>
-    
-    <div class="payment-modal" id="payment-modal">
-        <span class="close-modal" id="close-modal">&times;</span>
-        <div class="payment-content">
-            <h2 data-i18n="payment_title">إتمام عملية الشراء</h2>
-            <p><span data-i18n="guide_price">سعر الدليل:</span> <strong>5 دولار</strong></p>
-            
-            <!-- زر PayPal الأزرق -->
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                <input type="hidden" name="cmd" value="_s-xclick">
-                <input type="hidden" name="hosted_button_id" value="45FRK7VTDGTPA">
-                <button type="submit" class="cta-button" style="background-color: var(--paypal-blue); display: block; margin: 20px auto; border: none; cursor: pointer;" data-i18n="paypal_button">
-                    الدفع عبر PayPal
-                </button>
-            </form>
-            
-            <!-- قسم التحميل (مخفي في البداية) -->
-            <div id="download-section" style="display: none; text-align: center; margin-top: 30px;">
-                <a href="https://drive.google.com/uc?export=download&id=1YgHMf-Bg6IkhSN-7J2ihqtDFu5-3U2_v" 
-                   class="cta-button"
-                   style="background-color: var(--spice-orange);"
-                   data-i18n="download_button">
-                    تحميل الدليل الآن
-                </a>
-                <p><small data-i18n="download_note2">سيبدأ التحميل تلقائياً بعد النقر</small></p>
-            </div>
-            
-            <p><small data-i18n="payment_note">سيتم توجيهك إلى صفحة الدفع الآمنة</small></p>
-        </div>
-    </div>
     
     <script>
         const i18n = {
@@ -507,27 +477,6 @@
         
         document.addEventListener('DOMContentLoaded', () => {
             i18n.init();
-            
-            document.getElementById('buy-now-btn').addEventListener('click', function() {
-                document.getElementById('payment-modal').style.display = 'flex';
-            });
-            
-            document.getElementById('close-modal').addEventListener('click', function() {
-                document.getElementById('payment-modal').style.display = 'none';
-            });
-            
-            window.addEventListener('click', function(e) {
-                if (e.target === document.getElementById('payment-modal')) {
-                    document.getElementById('payment-modal').style.display = 'none';
-                }
-            });
-            
-            // تحقق مما إذا كان هناك معلمة success في URL (للمحاكاة)
-            const urlParams = new URLSearchParams(window.location.search);
-            if(urlParams.has('payment_success')) {
-                document.getElementById('payment-modal').style.display = 'flex';
-                document.getElementById('download-section').style.display = 'block';
-            }
         });
     </script>
 </body>
